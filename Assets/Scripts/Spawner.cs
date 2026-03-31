@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static event Action<int> OnWaveChanged;
+
     [SerializeField] private WaveData[] waves;
     private int _currentWaveIndex = 0;
+    private int _waveCounter = 0;
     private WaveData CurrentWave => waves[_currentWaveIndex];
     
     private float _spawnTimer;
@@ -43,6 +47,11 @@ public class Spawner : MonoBehaviour
         Enemy.OnEnemyReachedEnd -= HandleEnemyReachedEnd;
     }
 
+    private void Start()
+    {
+        OnWaveChanged?.Invoke(_waveCounter);
+    }
+
     void Update()
     {
         if (_isBetweenWaves)
@@ -55,6 +64,8 @@ public class Spawner : MonoBehaviour
                 // returns whats left after divison
 
                 _currentWaveIndex = (_currentWaveIndex + 1) % waves.Length;
+                _waveCounter++;
+                OnWaveChanged?.Invoke(_waveCounter);
                 _spawnCounter = 0;
                 _enemiesRemoved = 0;
                 _spawnTimer = 0f;
