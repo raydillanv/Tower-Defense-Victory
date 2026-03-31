@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
             else // reached last waypoint
             {
                 // null checking + event invocation
+                // also invokes the data which contains how many lives a player loses when enemy reaches the end
                 OnEnemyReachedEnd?.Invoke(data);
                 gameObject.SetActive(false);
                 print(gameObject.name + " reached the end of the map.");
