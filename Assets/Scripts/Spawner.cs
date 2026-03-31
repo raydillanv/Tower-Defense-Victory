@@ -28,6 +28,10 @@ public class Spawner : MonoBehaviour
         };
     }
 
+    private float _timeBetweenWaves = 2f;
+    private float _waveCooldown;
+    private bool _isBetweenWaves = false;
+
     private void OnEnable()
     {
         // subscribes to on enemy reached end message
@@ -41,22 +45,38 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer <= 0 && _spawnCounter < CurrentWave.enemiesPerWave)
-        {
-            _spawnTimer = CurrentWave.spawnInterval;
-            SpawnEnemy();
-            _spawnCounter++;
-        } // The observer pattern: a way to let one object 'broadcast' a message, other objects can 'listen' and react when the message is sent
-        else if (_spawnCounter >= CurrentWave.enemiesPerWave && _enemiesRemoved >= CurrentWave.enemiesPerWave)
-        {
-            // Modulo operator % (remainder operator)
-            // Makes sure that if the index goes past the last wave, it wraps around to 0
-            // returns whats left after divison
-            _currentWaveIndex = (_currentWaveIndex + 1) % waves.Length;
-            _spawnCounter = 0;
-            _enemiesRemoved = 0;
+        if (_isBetweenWaves)
+        { 
+            _waveCooldown -= Time.deltaTime;
+            if ( _waveCooldown <= 0f)
+            {
+                // Modulo operator % (remainder operator)
+                // Makes sure that if the index goes past the last wave, it wraps around to 0
+                // returns whats left after divison
+
+                _currentWaveIndex = (_currentWaveIndex + 1) % waves.Length;
+                _spawnCounter = 0;
+                _enemiesRemoved = 0;
+                _spawnTimer = 0f;
+                _isBetweenWaves = false;
+            }
         }
+        else
+        {
+            _spawnTimer -= Time.deltaTime;
+            if (_spawnTimer <= 0 && _spawnCounter < CurrentWave.enemiesPerWave)
+            {
+                _spawnTimer = CurrentWave.spawnInterval;
+                SpawnEnemy();
+                _spawnCounter++;
+            } // The observer pattern: a way to let one object 'broadcast' a message, other objects can 'listen' and react when the message is sent
+            else if (_spawnCounter >= CurrentWave.enemiesPerWave && _enemiesRemoved >= CurrentWave.enemiesPerWave)
+            {
+                _isBetweenWaves = true;
+                _waveCooldown = _timeBetweenWaves;
+            }
+        }
+
     }
 
     private void SpawnEnemy()
