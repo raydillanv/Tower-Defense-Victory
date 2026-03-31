@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9002544585085014317}
   - component: {fileID: 5840944380321900495}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: ImpEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1837830896318328027, guid: eed602c85d9aec14ca44ea35001868c1, type: 3}
+  m_Sprite: {fileID: 6666899368776408100, guid: e1b4020244d1d7f43b25c59113cd98e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
