@@ -1,10 +1,18 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     //.net style coding conventions
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private Path currentPath;
+
+    // data driven design
+    // data is assigned in the prefab and can help set things for each enemy type without ever hard coding things
+    [SerializeField] private EnemyData data;
+
+    public static event Action<EnemyData> OnEnemyReachedEnd;
+
+    //[SerializeField] private float moveSpeed = 3f;
+    private Path _currentPath;
     private Vector3 _targetPosition;
     private int _currentWaypoint;
 
@@ -12,34 +20,36 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         // awake runs before on enable
-        currentPath = GameObject.Find("Path").GetComponent<Path>();
+        _currentPath = GameObject.Find("Path").GetComponent<Path>();
     }
 
     private void OnEnable()
     {
         // on enable runs before start
         _currentWaypoint = 0;
-        _targetPosition = currentPath.GetPosition(0);
+        _targetPosition = _currentPath.GetPosition(0);
     }
 
     void Update()
     {
         
         // moving towards target position
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, data.speed * Time.deltaTime);
 
         // when the target position is reached we set a new target position
         float relativeDistance = (transform.position - _targetPosition).magnitude;
         if (relativeDistance < 0.1f)
         {
             // check to make sure its not the last index
-            if (_currentWaypoint < currentPath.Waypoints.Length - 1)
+            if (_currentWaypoint < _currentPath.Waypoints.Length - 1)
             {
                 _currentWaypoint++;
-                _targetPosition = currentPath.GetPosition(_currentWaypoint);
+                _targetPosition = _currentPath.GetPosition(_currentWaypoint);
             }
-            else
+            else // reached last waypoint
             {
+                // null checking + event invocation
+                OnEnemyReachedEnd?.Invoke(data);
                 gameObject.SetActive(false);
                 print(gameObject.name + " reached the end of the map.");
             }

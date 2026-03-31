@@ -288,7 +288,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a22199f49968347ab880e48ce52b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  pool: {fileID: 1809718620}
+  waves:
+  - {fileID: 11400000, guid: 70d7cbaf5c306474aa23a2d842f078a3, type: 2}
+  - {fileID: 11400000, guid: e741e1ae69e83334f8762f7713bcc301, type: 2}
+  - {fileID: 11400000, guid: 231084710bce1a74486857308b9d84e8, type: 2}
+  goblinPool: {fileID: 1809718620}
+  impPool: {fileID: 2037305998}
+  wolfPool: {fileID: 1848069746}
 --- !u!4 &292499786
 Transform:
   m_ObjectHideFlags: 0

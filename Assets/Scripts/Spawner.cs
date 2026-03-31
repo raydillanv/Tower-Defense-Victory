@@ -1,26 +1,79 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private WaveData[] waves;
+    private int _currentWaveIndex = 0;
+    private WaveData CurrentWave => waves[_currentWaveIndex];
+    
     private float _spawnTimer;
-    private float _spawnInterval = 1.5f;
+    private float _spawnCounter;
+    private int _enemiesRemoved;
 
-    [SerializeField] private ObjectPooler pool;
+    [SerializeField] private ObjectPooler goblinPool;
+    [SerializeField] private ObjectPooler impPool;
+    [SerializeField] private ObjectPooler wolfPool;
+
+    private Dictionary<EnemyType, ObjectPooler> _poolDictionary;
+
+    private void Awake()
+    {
+        _poolDictionary = new Dictionary<EnemyType, ObjectPooler>()
+        {
+            // links the enums from the static data to the non-data-persistent pools within the scene
+            {EnemyType.Goblin, goblinPool },
+            {EnemyType.Imp, impPool },
+            {EnemyType.Wolf, wolfPool },
+        };
+    }
+
+    private void OnEnable()
+    {
+        // subscribes to on enemy reached end message
+        Enemy.OnEnemyReachedEnd += HandleEnemyReachedEnd;
+    }
+
+    private void OnDisable()
+    { // unsubscribe to prevent memory leaks
+        Enemy.OnEnemyReachedEnd -= HandleEnemyReachedEnd;
+    }
 
     void Update()
     {
         _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer <= 0)
+        if (_spawnTimer <= 0 && _spawnCounter < CurrentWave.enemiesPerWave)
         {
-            _spawnTimer = _spawnInterval;
+            _spawnTimer = CurrentWave.spawnInterval;
             SpawnEnemy();
+            _spawnCounter++;
+        } // The observer pattern: a way to let one object 'broadcast' a message, other objects can 'listen' and react when the message is sent
+        else if (_spawnCounter >= CurrentWave.enemiesPerWave && _enemiesRemoved >= CurrentWave.enemiesPerWave)
+        {
+            // Modulo operator % (remainder operator)
+            // Makes sure that if the index goes past the last wave, it wraps around to 0
+            // returns whats left after divison
+            _currentWaveIndex = (_currentWaveIndex + 1) % waves.Length;
+            _spawnCounter = 0;
+            _enemiesRemoved = 0;
         }
     }
 
     private void SpawnEnemy()
     {
-        GameObject spawnedObject = pool.GetPooledObject();
-        spawnedObject.transform.position = transform.position;
-        spawnedObject.SetActive(true);
+        // matching enemy type key with pool in inspector
+        if (_poolDictionary.TryGetValue(CurrentWave.enemyType, out var pool))
+        {
+            GameObject spawnedObject = pool.GetPooledObject();
+            spawnedObject.transform.position = transform.position;
+            spawnedObject.SetActive(true);
+        }
+        
     }
+
+    private void HandleEnemyReachedEnd(EnemyData data)
+    {
+        _enemiesRemoved++;
+    }
+
 }
