@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Transform healthBar;
     private Vector3 _healthBarOriginalScale;
+    private bool _hasBeenCounted = false; 
 
 
     private void Awake()
@@ -42,7 +43,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
+        // checks if the enemy has been counted in the wave as destroyed or reached the end, if it has then we do not execute further code
+        if (_hasBeenCounted) return;
         // moving towards target position
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, data.speed * Time.deltaTime);
 
@@ -60,9 +62,10 @@ public class Enemy : MonoBehaviour
             {
                 // null checking + event invocation
                 // also invokes the data which contains how many lives a player loses when enemy reaches the end
+                _hasBeenCounted = true;
                 OnEnemyReachedEnd?.Invoke(data);
                 gameObject.SetActive(false);
-                print(gameObject.name + " reached the end of the map.");
+                //print(gameObject.name + " reached the end of the map.");
             }
 
         }
@@ -70,12 +73,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-
+        // checks if the enemy has been counted in the wave as destroyed or reached the end, if it has then we do not execute further code
+        if (_hasBeenCounted) return;
         _lives -= damage;
         _lives = Math.Max(_lives, 0);
         UpdateHealthBar();
         if (_lives <= 0)
         {
+            _hasBeenCounted = true;
             OnEnemyDestroyed?.Invoke(this);
             gameObject.SetActive(false);
         }
@@ -91,6 +96,7 @@ public class Enemy : MonoBehaviour
 
     public void Initialize(float healthMultiplier)
     {
+        _hasBeenCounted = false;
         _maxLives = data.lives * healthMultiplier;
         _lives = _maxLives;
         UpdateHealthBar();

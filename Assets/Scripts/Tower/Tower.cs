@@ -69,6 +69,9 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
+        // remove anything that is ever null or not active in the hierarchy because that would mean another tower potentially destroyed it
+        _enemiesInRange.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeInHierarchy);
+
         if (_enemiesInRange.Count > 0)
         {
             GameObject projectile = _projectilePool.GetPooledObject();

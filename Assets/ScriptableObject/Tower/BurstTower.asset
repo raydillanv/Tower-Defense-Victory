@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee9347aff89321d4b83155fd418d648a, type: 3}
-  m_Name: FastTower
+  m_Name: BurstTower
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  range: 3.5
-  shootInterval: 0.7
-  projectileSpeed: 10
-  projectileSize: 0.1
-  projectileDuration: 2.2
-  damage: 1
+  range: 4
+  shootInterval: 0.03
+  projectileSpeed: 8
+  projectileSize: 0.08
+  projectileDuration: 0.5
+  damage: 0.1

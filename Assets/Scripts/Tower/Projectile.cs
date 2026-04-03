@@ -7,6 +7,11 @@ public class Projectile : MonoBehaviour
     private Vector3 _shootDirection;
     private float _projectileDuration;
 
+    public void Start()
+    {
+        transform.localScale = Vector3.one * _data.projectileSize;
+    }
+
     void Update()
     {
         if (_projectileDuration <= 0)
