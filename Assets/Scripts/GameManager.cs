@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private void HandleEnemyReachedEnd(EnemyData data)
     {
         // Mathf.Max returns the larger of 2 options, so itll never go below 0 when lives is otherwise negatives
-        _lives -= Mathf.Max(0, _lives - data.damage);
+        _lives = Mathf.Max(0, _lives - data.damage);
         OnLivesChanged?.Invoke(_lives);
     }
 }
