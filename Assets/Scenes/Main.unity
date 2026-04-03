@@ -10216,6 +10216,7 @@ GameObject:
   - component: {fileID: 1792856630}
   - component: {fileID: 1792856633}
   - component: {fileID: 1792856632}
+  - component: {fileID: 1792856634}
   m_Layer: 0
   m_Name: FastTower
   m_TagString: Untagged
@@ -10347,6 +10348,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tower
   data: {fileID: 11400000, guid: ff798097de8d75e4e8b4a07880cc1d1d, type: 2}
+--- !u!114 &1792856634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792856629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f471075a9d62c44cbd113099aaa586d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
+  prefab: {fileID: 7069660082705518536, guid: fca412dc005467340a965da1a644fa50, type: 3}
+  poolSize: 5
 --- !u!1 &1809718619
 GameObject:
   m_ObjectHideFlags: 0

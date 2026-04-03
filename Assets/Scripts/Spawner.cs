@@ -40,11 +40,13 @@ public class Spawner : MonoBehaviour
     {
         // subscribes to on enemy reached end message
         Enemy.OnEnemyReachedEnd += HandleEnemyReachedEnd;
+        Enemy.OnEnemyDestroyed += HandleEnemyDestoryed;
     }
 
     private void OnDisable()
     { // unsubscribe to prevent memory leaks
         Enemy.OnEnemyReachedEnd -= HandleEnemyReachedEnd;
+        Enemy.OnEnemyDestroyed -= HandleEnemyDestoryed;
     }
 
     private void Start()
@@ -103,6 +105,11 @@ public class Spawner : MonoBehaviour
     }
 
     private void HandleEnemyReachedEnd(EnemyData data)
+    {
+        _enemiesRemoved++;
+    }
+
+    private void HandleEnemyDestoryed(Enemy enemy)
     {
         _enemiesRemoved++;
     }

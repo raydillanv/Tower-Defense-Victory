@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyData data;
 
     public static event Action<EnemyData> OnEnemyReachedEnd;
+    public static event Action<Enemy> OnEnemyDestroyed;
 
     //[SerializeField] private float moveSpeed = 3f;
     private Path _currentPath;
     private Vector3 _targetPosition;
     private int _currentWaypoint;
+    private float _lives;
 
 
     private void Awake()
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
         // on enable runs before start
         _currentWaypoint = 0;
         _targetPosition = _currentPath.GetPosition(0);
+        _lives = data.lives;
     }
 
     void Update()
@@ -57,5 +60,17 @@ public class Enemy : MonoBehaviour
 
         }
     }
+
+    public void TakeDamage(float damage)
+    {
+        _lives -= damage;
+        _lives = Math.Max(_lives, 0);
+        if (_lives <= 0)
+        {
+            OnEnemyDestroyed?.Invoke(this);
+            gameObject.SetActive(false);
+        }
+    }
+
 
 }
