@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     // data driven design
     // data is assigned in the prefab and can help set things for each enemy type without ever hard coding things
     [SerializeField] private EnemyData data;
+    public EnemyData Data => data; // short hand expression bullet, read only property
 
     public static event Action<EnemyData> OnEnemyReachedEnd;
     public static event Action<Enemy> OnEnemyDestroyed;
