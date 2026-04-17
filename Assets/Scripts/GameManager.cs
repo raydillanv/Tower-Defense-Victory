@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     private int _lives = 20;
     private int _resources = 175;
+    // adds public ability to read value outside of class
+    public int Resources => _resources;
 
     private void Awake()
     {
