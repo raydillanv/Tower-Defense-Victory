@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -23,6 +25,14 @@ public class UIController : MonoBehaviour
     [SerializeField] private Button speed1Button;
     [SerializeField] private Button speed2Button;
     [SerializeField] private Button speed3Button;
+    // white means the sprite is untinted and unaltered
+    [SerializeField] private Color normalButtonColor = Color.white;
+    [SerializeField] private Color selectedButtonColor = Color.grey;
+    [SerializeField] private Color normalTextColor = Color.black;
+    [SerializeField] private Color selectedTextColor = Color.white;
+
+    [SerializeField] private GameObject pausePanel;
+    private bool _isGamePaused = false;
 
     public void OnEnable()
     {
@@ -48,6 +58,16 @@ public class UIController : MonoBehaviour
         speed1Button.onClick.AddListener(() => SetGameSpeed(0.2f));
         speed2Button.onClick.AddListener(() => SetGameSpeed(1f));
         speed3Button.onClick.AddListener(() => SetGameSpeed(2f));
+
+        HighlightSelectedSpeedButton(GameManager.Instance.GameSpeed);
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            TogglePause();
+        }
     }
 
     private void UpdateWaveText(int currentWave)
@@ -73,6 +93,9 @@ public class UIController : MonoBehaviour
 
     private void ShowTowerPanel()
     {
+        if (pausePanel.activeSelf)
+            return;
+
         towerPanel.SetActive(true);
         Platform.towerPanelOpen = true;
         GameManager.Instance.SetTimeScale(0f);
@@ -83,7 +106,7 @@ public class UIController : MonoBehaviour
     {
         towerPanel.SetActive(false);
         Platform.towerPanelOpen = false;
-        GameManager.Instance.SetTimeScale(1f);
+        GameManager.Instance.SetTimeScale(GameManager.Instance.GameSpeed);
     }
 
     private void PopulateTowerCards()
@@ -127,7 +150,58 @@ public class UIController : MonoBehaviour
 
     private void SetGameSpeed(float timeScale)
     {
+        HighlightSelectedSpeedButton(timeScale);
         GameManager.Instance.SetGameSpeed(timeScale);
     }
 
+    private void UpdateButtonVisual(Button button, bool isSelected)
+    {
+        // ternary conditional operator, single line if else
+        button.image.color = isSelected ? selectedButtonColor : normalButtonColor;
+
+        TMP_Text text = button.GetComponent<TMP_Text>();
+        if (text != null)
+        {
+            text.color = isSelected? selectedTextColor : normalTextColor;
+        }
+    }
+
+    private void HighlightSelectedSpeedButton(float selectedSpeed)
+    {
+        // speed matches whichever button was pressed
+        UpdateButtonVisual(speed1Button, selectedSpeed == 0.2f);
+        UpdateButtonVisual(speed2Button, selectedSpeed == 1f);
+        UpdateButtonVisual(speed3Button, selectedSpeed == 2f);
+    }
+
+    public void TogglePause()
+    {
+        if (towerPanel.activeSelf)
+            return;
+
+        if (_isGamePaused)
+        {
+            pausePanel.SetActive(false);
+            _isGamePaused = false;
+            GameManager.Instance.SetTimeScale(GameManager.Instance.GameSpeed);
+        }
+        else
+        {
+            pausePanel.SetActive(true);
+            _isGamePaused = true;
+            GameManager.Instance.SetTimeScale(0f);
+        }
+    }
+
+    public void RestartLevel()
+    {
+        GameManager.Instance.SetTimeScale(1f);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
