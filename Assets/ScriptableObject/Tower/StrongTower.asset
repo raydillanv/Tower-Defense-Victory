@@ -18,3 +18,5 @@ MonoBehaviour:
   projectileSize: 0.15
   projectileDuration: 3
   damage: 10
+  cost: 100
+  sprite: {fileID: 3465286685962602723, guid: 885d7f754fe2f0747967c143c95d238b, type: 3}

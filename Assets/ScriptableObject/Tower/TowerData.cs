@@ -9,4 +9,7 @@ public class TowerData : ScriptableObject
     public float projectileSize;
     public float projectileDuration;
     public float damage;
+
+    public int cost;
+    public Sprite sprite;
 }
