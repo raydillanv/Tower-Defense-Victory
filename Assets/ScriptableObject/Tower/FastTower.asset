@@ -20,3 +20,4 @@ MonoBehaviour:
   damage: 1
   cost: 50
   sprite: {fileID: 6623151957235123224, guid: b607d4c3f13d5ea4192413893c6d07e8, type: 3}
+  prefab: {fileID: 7374712770952938520, guid: 08877a886b5e4194ca272aa18f4c9453, type: 3}
