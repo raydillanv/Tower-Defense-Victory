@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     // adds public ability to read value outside of class
     public int Resources => _resources;
 
+    private float _gameSpeed = 1;
+    public float GameSpeed => _gameSpeed;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,9 +64,16 @@ public class GameManager : MonoBehaviour
         OnResourcesChanged?.Invoke(_resources);
     }
 
+    // for pausing / unpausing
     public void SetTimeScale(float scale)
     {
         Time.timeScale = scale;
+    }
+
+    public void SetGameSpeed( float newSpeed)
+    {
+        _gameSpeed = newSpeed;
+        SetTimeScale(_gameSpeed);
     }
 
     public void SpendResources(int amount)

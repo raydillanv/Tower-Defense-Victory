@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
@@ -19,6 +20,10 @@ public class UIController : MonoBehaviour
 
     private Platform _currentPlatform;
 
+    [SerializeField] private Button speed1Button;
+    [SerializeField] private Button speed2Button;
+    [SerializeField] private Button speed3Button;
+
     public void OnEnable()
     {
         Spawner.OnWaveChanged += UpdateWaveText;
@@ -35,6 +40,14 @@ public class UIController : MonoBehaviour
         GameManager.OnResourcesChanged -= UpdateResourcesText;
         Platform.OnPlatformClicked -= HandlePlatformClicked;
         TowerCard.OnTowerSelected -= HandleTowerSelected;
+    }
+
+    private void Start()
+    {
+        // lambda to do something
+        speed1Button.onClick.AddListener(() => SetGameSpeed(0.2f));
+        speed2Button.onClick.AddListener(() => SetGameSpeed(1f));
+        speed3Button.onClick.AddListener(() => SetGameSpeed(2f));
     }
 
     private void UpdateWaveText(int currentWave)
@@ -110,6 +123,11 @@ public class UIController : MonoBehaviour
         noResourcesText.SetActive(true);
         yield return new WaitForSecondsRealtime(3f);
         noResourcesText.SetActive(false);
+    }
+
+    private void SetGameSpeed(float timeScale)
+    {
+        GameManager.Instance.SetGameSpeed(timeScale);
     }
 
 }
