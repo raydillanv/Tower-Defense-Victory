@@ -59,6 +59,7 @@ public class UIController : MonoBehaviour
     private void ShowTowerPanel()
     {
         towerPanel.SetActive(true);
+        Platform.towerPanelOpen = true;
         GameManager.Instance.SetTimeScale(0f);
         PopulateTowerCards();
     }
@@ -66,6 +67,7 @@ public class UIController : MonoBehaviour
     public void HideTowerPanel()
     {
         towerPanel.SetActive(false);
+        Platform.towerPanelOpen = false;
         GameManager.Instance.SetTimeScale(1f);
     }
 
@@ -86,9 +88,11 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void HandleTowerSelected(TowerData data)
+    private void HandleTowerSelected(TowerData towerData)
     {
-        _currentPlatform.PlaceTower(data);
+        GameManager.Instance.SpendResources(towerData.cost);
+        _currentPlatform.PlaceTower(towerData);
+        HideTowerPanel();
     }
 
 }
