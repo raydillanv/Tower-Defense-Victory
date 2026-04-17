@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: 61d2611b154f1334a97cab4a8427febc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6756144117354977823
+    second: RDV_26_MarketingStuffIcon_0
+  - first:
+      213: 5892021797022902333
+    second: RDV_26_MarketingStuffIcon_1
+  - first:
+      213: 7526533584978579410
+    second: RDV_26_MarketingStuffIcon_2
+  - first:
+      213: -8994490917922878473
+    second: RDV_26_MarketingStuffIcon_3
+  - first:
+      213: 1358480931619691792
+    second: RDV_26_MarketingStuffIcon_4
+  - first:
+      213: 3686304611456879163
+    second: RDV_26_MarketingStuffIcon_5
+  - first:
+      213: 3252644804142640246
+    second: RDV_26_MarketingStuffIcon_6
+  - first:
+      213: -353494972059696100
+    second: RDV_26_MarketingStuffIcon_7
+  - first:
+      213: 4172212312835837813
+    second: RDV_26_MarketingStuffIcon_8
+  - first:
+      213: -5278384682034972206
+    second: RDV_26_MarketingStuffIcon_9
+  - first:
+      213: 800948037256763448
+    second: RDV_26_MarketingStuffIcon_10
+  - first:
+      213: 137369940252635883
+    second: RDV_26_MarketingStuffIcon_11
+  - first:
+      213: -5147253113556906742
+    second: RDV_26_MarketingStuffIcon_12
+  - first:
+      213: 615242407269483670
+    second: RDV_26_MarketingStuffIcon_13
+  - first:
+      213: 5656444514353189921
+    second: RDV_26_MarketingStuffIcon_14
+  - first:
+      213: -7100340220935679257
+    second: RDV_26_MarketingStuffIcon_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_0
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 313
+        width: 118
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e526b988ba5d32a0800000000000000
+      internalID: -6756144117354977823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_1
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 311
+        width: 87
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d38a86c6b9aa4c150800000000000000
+      internalID: 5892021797022902333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_2
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 409
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df02b21b6e937860800000000000000
+      internalID: 7526533584978579410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_3
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 315
+        width: 40
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fbcabd3a262d2380800000000000000
+      internalID: -8994490917922878473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_4
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 315
+        width: 40
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d5553b53b4ad210800000000000000
+      internalID: 1358480931619691792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_5
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 313
+        width: 71
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a85c36382682330800000000000000
+      internalID: 3686304611456879163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_6
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 271
+        width: 85
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c21735737b32d20800000000000000
+      internalID: 3252644804142640246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_7
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 315
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14ce702232281bf0800000000000000
+      internalID: -353494972059696100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_8
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 313
+        width: 71
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f47124efca6e930800000000000000
+      internalID: 4172212312835837813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_9
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 315
+        width: 87
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9317709196fb6b0800000000000000
+      internalID: -5278384682034972206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_10
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 313
+        width: 82
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8385c3c0ff98d1b00800000000000000
+      internalID: 800948037256763448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_11
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 258
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be2339b9b3908e100800000000000000
+      internalID: 137369940252635883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_12
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 258
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0dca6580984198b0800000000000000
+      internalID: -5147253113556906742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_13
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 258
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 694cd00b5b7c98800800000000000000
+      internalID: 615242407269483670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_14
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 258
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1249ab1115abf7e40800000000000000
+      internalID: 5656444514353189921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RDV_26_MarketingStuffIcon_15
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 258
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e2d5b23036867d90800000000000000
+      internalID: -7100340220935679257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RDV_26_MarketingStuffIcon_0: -6756144117354977823
+      RDV_26_MarketingStuffIcon_1: 5892021797022902333
+      RDV_26_MarketingStuffIcon_10: 800948037256763448
+      RDV_26_MarketingStuffIcon_11: 137369940252635883
+      RDV_26_MarketingStuffIcon_12: -5147253113556906742
+      RDV_26_MarketingStuffIcon_13: 615242407269483670
+      RDV_26_MarketingStuffIcon_14: 5656444514353189921
+      RDV_26_MarketingStuffIcon_15: -7100340220935679257
+      RDV_26_MarketingStuffIcon_2: 7526533584978579410
+      RDV_26_MarketingStuffIcon_3: -8994490917922878473
+      RDV_26_MarketingStuffIcon_4: 1358480931619691792
+      RDV_26_MarketingStuffIcon_5: 3686304611456879163
+      RDV_26_MarketingStuffIcon_6: 3252644804142640246
+      RDV_26_MarketingStuffIcon_7: -353494972059696100
+      RDV_26_MarketingStuffIcon_8: 4172212312835837813
+      RDV_26_MarketingStuffIcon_9: -5278384682034972206
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
