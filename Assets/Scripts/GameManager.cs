@@ -3,11 +3,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //Singleton global accessible
+    public static GameManager Instance { get; private set; }
+
     public static event Action<int> OnLivesChanged;
     public static event Action<int> OnResourcesChanged;
 
     private int _lives = 20;
     private int _resources = 0;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else
+        {// prevent multiple instances
+            Instance = this;
+        }
+    }
 
     private void OnEnable()
     {
@@ -43,5 +57,10 @@ public class GameManager : MonoBehaviour
     {
         _resources += amount;
         OnResourcesChanged?.Invoke(_resources);
+    }
+
+    public void SetTimeScale(float scale)
+    {
+        Time.timeScale = scale;
     }
 }

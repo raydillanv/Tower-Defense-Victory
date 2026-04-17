@@ -48,11 +48,13 @@ public class UIController : MonoBehaviour
     private void ShowTowerPanel()
     {
         towerPanel.SetActive(true);
+        GameManager.Instance.SetTimeScale(0f);
     }
 
     public void HideTowerPanel()
     {
         towerPanel.SetActive(false);
+        GameManager.Instance.SetTimeScale(1f);
     }
 
 }
