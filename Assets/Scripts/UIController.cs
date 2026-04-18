@@ -284,6 +284,7 @@ public class UIController : MonoBehaviour
     public void EnterEndlessMode()
     {
         levelCompletePanel.SetActive(false);
+        FinalLevelCompletePanel.SetActive(false);
         GameManager.Instance.SetTimeScale(GameManager.Instance.GameSpeed);
         Spawner.Instance.EnableEndlessMode();
     }
