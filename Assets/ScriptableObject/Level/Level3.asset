@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f32a83fb2ca7994da059841effb4ea1, type: 3}
-  m_Name: Level1
+  m_Name: Level3
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelName: Level1
-  wavesToWin: 5
-  startingResoruces: 150
-  startingLives: 100
+  levelName: Level3
+  wavesToWin: 20
+  startingResoruces: 250
+  startingLives: 200

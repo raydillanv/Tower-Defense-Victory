@@ -38,6 +38,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text objectiveText;
     [SerializeField] private GameObject levelCompletePanel;
+    [SerializeField] private GameObject FinalLevelCompletePanel;
 
     private void Awake()
     {
@@ -265,8 +266,19 @@ public class UIController : MonoBehaviour
 
     private void ShowLevelComplete()
     {
-        levelCompletePanel.SetActive(true);
-        GameManager.Instance.SetTimeScale(0f);
+        if (LevelManager.Instance.levelIndex >= 2)
+        {
+            FinalLevelCompletePanel.SetActive(true);
+            GameManager.Instance.SetTimeScale(0f);
+        }
+        else
+        {
+            
+            levelCompletePanel.SetActive(true);
+            GameManager.Instance.SetTimeScale(0f);
+        }
+
+        
     }
 
     public void EnterEndlessMode()
@@ -278,7 +290,15 @@ public class UIController : MonoBehaviour
 
     public void NextLevel()
     {
-
+        if (LevelManager.Instance.levelIndex >= 2)
+        {
+            // do nothing because we've finished all levels
+        }
+        else {
+            LevelManager.Instance.levelIndex++;
+            LevelManager.Instance.LoadLevel(LevelManager.Instance.allLevels[LevelManager.Instance.levelIndex]);
+        }
+            
     }
 
 }

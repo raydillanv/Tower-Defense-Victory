@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public LevelData[] allLevels;
     public LevelData CurrentLevel {  get; private set; }
-
+    public int levelIndex = 0;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        CurrentLevel = allLevels[0];
+        CurrentLevel = allLevels[levelIndex];
     }
 
     public void LoadLevel(LevelData levelData)

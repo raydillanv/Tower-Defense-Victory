@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Level2
   wavesToWin: 10
-  startingResoruces: 300
-  startingLives: 3
+  startingResoruces: 175
+  startingLives: 150

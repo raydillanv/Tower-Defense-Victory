@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
     private float _spawnTimer;
     private float _spawnCounter;
     private int _enemiesRemoved;
+    public bool levelComplete = false;
 
     [SerializeField] private ObjectPooler goblinPool;
     [SerializeField] private ObjectPooler impPool;
@@ -74,9 +75,10 @@ public class Spawner : MonoBehaviour
             _waveCooldown -= Time.deltaTime;
             if ( _waveCooldown <= 0f)
             {
-                if (_waveCounter +1 >= LevelManager.Instance.CurrentLevel.wavesToWin && !_isEndlessMode)
+                if (_waveCounter +1 >= LevelManager.Instance.CurrentLevel.wavesToWin && !_isEndlessMode && !levelComplete)
                 {
                     OnLevelComplete?.Invoke();
+                    levelComplete = true;
                     return;
                 }
 
@@ -91,6 +93,7 @@ public class Spawner : MonoBehaviour
                 _enemiesRemoved = 0;
                 _spawnTimer = 0f;
                 _isBetweenWaves = false;
+                levelComplete = false;
             }
         }
         else
