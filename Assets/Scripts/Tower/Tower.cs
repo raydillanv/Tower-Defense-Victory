@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("Exit called");
+        //print("Exited collider called");
         if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();

@@ -35,6 +35,8 @@ public class UIController : MonoBehaviour
     private bool _isGamePaused = false;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text objectiveText;
+    [SerializeField] private GameObject levelCompletePanel;
+
 
     public void OnEnable()
     {
@@ -44,6 +46,7 @@ public class UIController : MonoBehaviour
         Platform.OnPlatformClicked += HandlePlatformClicked;
         TowerCard.OnTowerSelected += HandleTowerSelected;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Spawner.OnLevelComplete += ShowLevelComplete;
     }
 
     public void OnDisable()
@@ -54,6 +57,7 @@ public class UIController : MonoBehaviour
         Platform.OnPlatformClicked -= HandlePlatformClicked;
         TowerCard.OnTowerSelected -= HandleTowerSelected;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Spawner.OnLevelComplete -= ShowLevelComplete;
     }
 
     private void Start()
@@ -241,10 +245,23 @@ public class UIController : MonoBehaviour
 
     private IEnumerator ShowObjective()
     {
-        objectiveText.text = $"Survive XXX Waves!";
+        objectiveText.text = $"Survive {LevelManager.Instance.CurrentLevel.wavesToWin} Waves!";
         objectiveText.gameObject.SetActive(true);
         yield return new WaitForSeconds(8f);
         objectiveText.gameObject.SetActive(false);
+    }
+
+    private void ShowLevelComplete()
+    {
+        levelCompletePanel.SetActive(true);
+        GameManager.Instance.SetTimeScale(0f);
+    }
+
+    public void EnterEndlessMode()
+    {
+        levelCompletePanel.SetActive(false);
+        GameManager.Instance.SetTimeScale(GameManager.Instance.GameSpeed);
+        Spawner.Instance.EnableEndlessMode();
     }
 
 }

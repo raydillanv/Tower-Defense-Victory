@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static Spawner Instance {  get; private set; }
+
     public static event Action<int> OnWaveChanged;
+    public static event Action OnLevelComplete;
 
     [SerializeField] private WaveData[] waves;
     private int _currentWaveIndex = 0;
@@ -30,11 +33,21 @@ public class Spawner : MonoBehaviour
             {EnemyType.Imp, impPool },
             {EnemyType.Wolf, wolfPool },
         };
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {// prevent multiple instances
+            Instance = this;
+        }
     }
 
     private float _timeBetweenWaves = 1f;
     private float _waveCooldown;
     private bool _isBetweenWaves = false;
+    private bool _isEndlessMode = false;
 
     private void OnEnable()
     {
@@ -61,6 +74,12 @@ public class Spawner : MonoBehaviour
             _waveCooldown -= Time.deltaTime;
             if ( _waveCooldown <= 0f)
             {
+                if (_waveCounter +1 >= LevelManager.Instance.CurrentLevel.wavesToWin && !_isEndlessMode)
+                {
+                    OnLevelComplete?.Invoke();
+                    return;
+                }
+
                 // Modulo operator % (remainder operator)
                 // Makes sure that if the index goes past the last wave, it wraps around to 0
                 // returns whats left after divison
@@ -100,7 +119,7 @@ public class Spawner : MonoBehaviour
             GameObject spawnedObject = pool.GetPooledObject();
             spawnedObject.transform.position = transform.position;
 
-            float healthMultiplier = 1f + (_waveCounter * 0.1f); // adds 10 percent to multiplier each wave
+            float healthMultiplier = 1f + (_waveCounter * 0.3f); // adds 30 percent to multiplier each wave
 
             Enemy enemy = spawnedObject.GetComponent<Enemy>();
             enemy.Initialize(healthMultiplier);
@@ -118,6 +137,11 @@ public class Spawner : MonoBehaviour
     private void HandleEnemyDestoryed(Enemy enemy)
     {
         _enemiesRemoved++;
+    }
+
+    public void EnableEndlessMode()
+    {
+        _isEndlessMode = true;
     }
 
 }
