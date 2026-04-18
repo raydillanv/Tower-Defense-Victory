@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    public static UIController Instance { get; private set; }
+
     [SerializeField] private TMP_Text waveText;
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text resourcesText;
@@ -37,6 +39,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text objectiveText;
     [SerializeField] private GameObject levelCompletePanel;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {// prevent multiple instances
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public void OnEnable()
     {
@@ -260,6 +274,11 @@ public class UIController : MonoBehaviour
         levelCompletePanel.SetActive(false);
         GameManager.Instance.SetTimeScale(GameManager.Instance.GameSpeed);
         Spawner.Instance.EnableEndlessMode();
+    }
+
+    public void NextLevel()
+    {
+
     }
 
 }

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         } else
         {// prevent multiple instances
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
