@@ -1,5 +1,8 @@
-using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
+using UnityEngine;
 
 public class Path : MonoBehaviour
 {
@@ -17,10 +20,13 @@ public class Path : MonoBehaviour
         {
             for (int i = 0; i < Waypoints.Length; i++)
             {
+                #if UNITY_EDITOR
                 GUIStyle style = new GUIStyle();
                 style.normal.textColor = Color.white;
                 style.alignment = TextAnchor.MiddleCenter;
+                // handles is only available in editor so have to wrap it in an if
                 Handles.Label(Waypoints[i].transform.position + Vector3.up * 0.7f, Waypoints[i].name, style);
+                #endif
 
                 if (i < Waypoints.Length - 1)
                 {
