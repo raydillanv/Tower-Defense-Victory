@@ -204,4 +204,10 @@ public class UIController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void GoToMainMenu()
+    {
+        GameManager.Instance.SetTimeScale(1f);
+        SceneManager.LoadScene("MainMenu");
+    }
 }
