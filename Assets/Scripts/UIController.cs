@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text waveText;
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text resourcesText;
-    [SerializeField] private GameObject noResourcesText;
+    [SerializeField] private TMP_Text warningText;
 
     [SerializeField] private GameObject towerPanel;
     [SerializeField] private GameObject towerCardPrefab;
@@ -34,6 +34,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     private bool _isGamePaused = false;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text objectiveText;
 
     public void OnEnable()
     {
@@ -42,6 +43,7 @@ public class UIController : MonoBehaviour
         GameManager.OnResourcesChanged += UpdateResourcesText;
         Platform.OnPlatformClicked += HandlePlatformClicked;
         TowerCard.OnTowerSelected += HandleTowerSelected;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void OnDisable()
@@ -51,6 +53,7 @@ public class UIController : MonoBehaviour
         GameManager.OnResourcesChanged -= UpdateResourcesText;
         Platform.OnPlatformClicked -= HandlePlatformClicked;
         TowerCard.OnTowerSelected -= HandleTowerSelected;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
@@ -134,24 +137,32 @@ public class UIController : MonoBehaviour
 
     private void HandleTowerSelected(TowerData towerData)
     {
+        if (_currentPlatform.transform.childCount > 0)
+        {
+            HideTowerPanel();
+            StartCoroutine(ShowWarningMessage("This spot already has a tower."));
+            return;
+        }
         if (GameManager.Instance.Resources >= towerData.cost)
         {
             GameManager.Instance.SpendResources(towerData.cost);
             _currentPlatform.PlaceTower(towerData);
-
+            SpriteRenderer Ren = _currentPlatform.GetComponent<SpriteRenderer>();
+            Ren.enabled = false;
         }
         else
         {
-            StartCoroutine(ShowNoResourcesMessage());
+            StartCoroutine(ShowWarningMessage("Not Enough Resources!"));
         }
             HideTowerPanel();
     }
 
-    private IEnumerator ShowNoResourcesMessage()
+    private IEnumerator ShowWarningMessage(string message)
     {
-        noResourcesText.SetActive(true);
+        warningText.text = message;
+        warningText.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(3f);
-        noResourcesText.SetActive(false);
+        warningText.gameObject.SetActive(false);
     }
 
     private void SetGameSpeed(float timeScale)
@@ -221,6 +232,19 @@ public class UIController : MonoBehaviour
     {
         GameManager.Instance.SetTimeScale(1f);
         gameOverPanel.SetActive(true);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(ShowObjective());
+    }
+
+    private IEnumerator ShowObjective()
+    {
+        objectiveText.text = $"Survive XXX Waves!";
+        objectiveText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(8f);
+        objectiveText.gameObject.SetActive(false);
     }
 
 }
